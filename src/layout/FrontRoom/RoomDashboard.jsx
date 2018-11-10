@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { BarLoader } from "react-spinners";
+import Typist from 'react-typist';
+
 
 //////////////////////////////// Components
 
@@ -17,17 +19,18 @@ class RoomDashboard extends Component {
         {rooms ? (
           <article className="list-container" id="books-interior-design">
             <div className="list">
-              <h2 className="list-title">
-                Room
+            
+              <div className="list-title">
+                notSpot
                 <span className="list-spacer"> / </span>{" "}
-                <span className="list-subcategory">Gatto</span>
-              </h2>
+                <span className="list-subcategory">doesn't exist</span>
+              </div>
+              
+
               <RoomList rooms={rooms} />
             </div>
             <RoomCreateForm />
-            <a className="back" href="../">
-              ← Back to the full list
-            </a>
+            
           </article>
         ) : (
           <article className="list-container">
@@ -54,5 +57,5 @@ const mapStateToProps = state => {
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{ collection: "rooms" }])
+  firestoreConnect([{ collection: "rooms", orderBy: ["createdAt", "desc"] }])
 )(RoomDashboard);

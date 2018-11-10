@@ -4,22 +4,27 @@ import FlipMove from "react-flip-move";
 
 class RoomList extends Component {
   render() {
-    const { chats } = this.props;
+    const { chats, roomid } = this.props;
     return (
       <ol className="list-content">
-        <FlipMove
+      {/* <FlipMove
           staggerDelayBy={300}
           appearAnimation="fade"
           enterAnimation="accordionVertical"
-          leaveAnimation="accordionVertical"
-        >
+          leaveAnimation="none"
+          maintainContainerHeight= 'true'
+      > */}
           {chats &&
             chats.map(chat => {
-              return <ChatListDetail chat={chat} key={chat.id} />;
+              return (
+                <ChatListDetail chat={chat} roomid={roomid} key={chat.id} />
+              );
             })}
-        </FlipMove>
+       {/*  </FlipMove> */}
       </ol>
     );
   }
 }
 export default RoomList;
+
+

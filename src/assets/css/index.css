@@ -156,6 +156,22 @@ input:focus{
     color: white;
 }
 
+.input {
+    background-color: transparent;
+    border-left: solid 0px;
+    border-right: solid 0px;
+    border-bottom: solid whitesmoke 0px;
+    border-top: solid 0px;
+    width: 100%;
+    color: white;
+    padding: 20px;
+}
+
+.input:focus{
+    outline: none;
+    color: white;
+}
+
 
 a {
     text-decoration: none
@@ -265,36 +281,6 @@ img {
     scroll-behavior: smooth
 }
 
-body[data-scheme="carl"] {
-    --bg: hsl(0, 0%, 100%);
-    --border: hsl(0, 0%, 93%);
-    --high: hsl(0, 0%, 50%);
-    --text: hsl(0, 0%, 10%)
-}
-
-body[data-scheme="manu"] {
-    --bg: hsl(0, 0%, 2%);
-    --border: hsl(0, 0%, 6%);
-    --high: hsl(0, 0%, 50%);
-    --text: hsl(0, 0%, 95%)
-}
-
-body[data-scheme="mike"] {
-    --bg: hsl(214, 18%, 17%);
-    --border: hsl(214, 18%, 16%);
-    --high: hsl(180, 100%, 49%);
-    --text: hsl(0, 0%, 95%)
-}
-
-body[data-scheme="dino"] {
-    --bg: hsl(60, 20%, 30%);
-    --border: hsl(60, 20%, 54%);
-    --high: hsl(0, 25%, 57%);
-    --text: hsl(0, 0%, 95%);
-    background-repeat: no-repeat;
-    background-position: bottom right
-}
-
 body {
     overflow-x: hidden;
     margin: 0;
@@ -369,94 +355,6 @@ body * {
     cursor: default
 }
 
-.menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 15rem;
-    background: var(--bg);
-    z-index: 9999;
-    padding: 0 2rem;
-    border-left: 1px solid var(--border);
-    overflow: auto;
-    -webkit-transform: translateX(100%);
-    transform: translateX(100%);
-    -webkit-transition-property: -webkit-transform;
-    transition-property: -webkit-transform;
-    transition-property: transform;
-    transition-property: transform, -webkit-transform
-}
-
-.menu.is-open {
-    -webkit-transform: initial;
-    transform: initial
-}
-
-.menu-list {
-    padding: 5.5rem 0;
-}
-
-.menu-item-title {
-    font-size: .9207272728rem;
-    font-family: inherit;
-    line-height: 1.5rem;
-    padding-top: .25rem;
-    padding-bottom: .25rem
-}
-
-.menu-item-title:not(:first-child) {
-    margin-top: 1.5rem
-}
-
-.menu-link {
-    font-size: .6465454546rem;
-    font-family: inherit;
-    line-height: .8rem;
-    padding-top: .1rem;
-    padding-bottom: .1rem;
-    color: dimgray;
-    -webkit-transition-property: color;
-    transition-property: color
-}
-
-.menu-link:hover {
-    color: var(--text)
-}
-
-.menu-btn {
-    border: none;
-    background: none;
-    outline: none;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    display: none
-}
-
-@media (min-width: 1000px) {
-    .menu-btn {
-        display: -webkit-box;
-        display: flex;
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        top: 0;
-        padding: 0 1.5rem
-    }
-}
-
-.menu-btn-text {
-    -webkit-writing-mode: tb;
-    writing-mode: tb;
-    white-space: nowrap
-}
-
 .grid {
     display: block;
     padding: 4rem 1rem
@@ -490,84 +388,22 @@ body * {
     }
 }
 
-.footer-content {
-    padding: 0 1rem 0;
-    -webkit-box-shadow: inset 0px 0px 0px 1px whitesmoke;
-    box-shadow: inset 0px 0px 0px 1px whitesmoke;
-
-    height: 100%
-}
-
-@media (min-width: 450px) {
-    .footer-content {
-        padding: 0 2rem 1rem
-    }
-}
-
-.footer-title {
-    font-size: 1.1650909091rem;
-    font-family: inherit;
-    line-height: 1.5rem;
-    padding-bottom: .25rem;
-    padding-top: .25rem;
-    padding: 1.75rem 0
-}
-
-.footer-text p {
-    margin-bottom: 1rem
-}
-
-.footer-text a::after {
-    content: "→";
-    -webkit-transform: translateX(-0.2rem);
-    transform: translateX(-0.2rem);
-    opacity: 0;
-    pointer-events: none;
-    -webkit-transition-property: opacity, -webkit-transform;
-    transition-property: opacity, -webkit-transform;
-    transition-property: transform, opacity;
-    transition-property: transform, opacity, -webkit-transform;
-    font-family: inherit;
-    display: inline-block
-}
-
-.footer-text a:hover::after {
-    opacity: 1;
-    -webkit-transform: translateX(0.5rem);
-    transform: translateX(0.5rem)
-}
-
-.list-container:not(:last-child) {
-    margin-bottom: 1rem
-}
-
-@media (min-width: 550px) {
-    .list-container:not(: last-child) {
-        margin-bottom: 2rem
-    }
-}
-
-@media (min-width: 800px) {
-    .list-container:not(: last-child) {
-        margin-bottom: 0
-    }
-}
-
 div.list {
     padding: 0 1rem 0;
-    -webkit-box-shadow: inset 0px 0px 0px 1px whitesmoke;
-    box-shadow: inset 0px 0px 0px 1px whitesmoke;
+    -webkit-box-shadow: inset 0px 0px 0px 1px #e5e5e5;
+    box-shadow: inset 0px 0px 0px 1px #e5e5e5;
 
     height: 100%
 }
 
 div.list2 {
     padding: 0 1rem 0;
-    -webkit-box-shadow: inset 0px 0px 0px 1px whitesmoke;
-    box-shadow: inset 0px 0px 0px 1px whitesmoke;
+    -webkit-box-shadow: inset 0px 0px 0px 1px #e5e5e5;
+    box-shadow: inset 0px 0px 0px 1px #e5e5e5;
     height: 100%;
     background: black;
 }
+
 
 @media (min-width: 450px) {
     div.list {
@@ -668,7 +504,7 @@ div.list2 {
     left: 0;
     right: 0;
     height: 1px;
-    background: whitesmoke;
+    background: #e5e5e5;
     display: block
 }
 
@@ -701,6 +537,39 @@ div.list2 {
     -webkit-transform: translate(0, -50%);
     transform: translate(0, -50%)
 }
+
+
+.chat-link {
+    display: block;
+    padding: 1rem 0;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    position: relative
+}
+
+.chat-link::after {
+    content: "delete";
+    color: dimgray;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    -webkit-transform: translate(-1rem, -50%);
+    transform: translate(-1rem, -50%);
+    opacity: 0;
+    pointer-events: none;
+    -webkit-transition-property: opacity, -webkit-transform;
+    transition-property: opacity, -webkit-transform;
+    transition-property: transform, opacity;
+    transition-property: transform, opacity, -webkit-transform;
+    font-family: inherit
+}
+
+.chat-link:hover::after {
+    opacity: 1;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%)
+}
+
 
 .product-name {
     font-size: .7272727273rem;
@@ -755,3 +624,17 @@ main.list .list-container {
     padding-top: .25rem;
     padding-bottom: .25rem
 }
+
+.Typist .Cursor {
+    display: inline-block; }
+    .Typist .Cursor--blinking {
+      opacity: 1;
+      animation: blink 1s linear infinite; }
+  
+  @keyframes blink {
+    0% {
+      opacity: 1; }
+    50% {
+      opacity: 0; }
+    100% {
+      opacity: 1; } }

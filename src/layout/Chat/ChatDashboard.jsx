@@ -11,10 +11,17 @@ import ChatList from "./ChatList";
 import ChatCreateForm from "./ChatCreateForm";
 
 class ChatDashboard extends Component {
+
+  componentWillUnmount() {
+    console.log(this)
+
+ this.props.firestore.unsetListener('chats');
+    // firebase.unsetListener({ collection: 'todos' }) // or object notation
+  }
+
   render() {
     const { chats } = this.props;
     const tid = this.props.match.params.id;
-    console.log(tid);
     return (
       <React.Fragment>
         {chats ? (
@@ -25,9 +32,9 @@ class ChatDashboard extends Component {
                 <span className="list-spacer"> / </span>{" "}
                 <span className="list-subcategory">{tid}</span>
               </h2>
-              <ChatList chats={chats} />
+              <ChatList chats={chats} roomid={tid} />
             </div>
-            <ChatCreateForm />
+            <ChatCreateForm roomid={tid} />
 
             <Link to={"/"} className="back">
               ← Back to the full list
