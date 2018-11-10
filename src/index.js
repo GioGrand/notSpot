@@ -11,7 +11,8 @@ import { reduxFirestore, getFirestore } from 'redux-firestore'
 import { reactReduxFirebase, getFirebase} from 'react-redux-firebase'
 import fbConfig from './config/fbConfig'
 import { composeWithDevTools } from 'redux-devtools-extension'
-
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
+import ReduxToastr from 'react-redux-toastr'
 
 const store = createStore(rootReducer, 
     composeWithDevTools(
@@ -27,7 +28,13 @@ const store = createStore(rootReducer,
     store.firebaseAuthIsReady.then(() => {
         ReactDOM.render(
             <Provider store={store}>
-            <App />
+            <div>
+            <ReduxToastr 
+            position='bottom-right'
+            transitionIn='fadeIn'
+            transitionOut='fadeOut'
+            />
+            <App /></div>
             </Provider>   
             , document.getElementById('root'));
         

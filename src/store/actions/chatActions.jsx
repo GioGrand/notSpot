@@ -1,3 +1,7 @@
+import { toastr } from 'react-redux-toastr'
+
+
+
 export const createRoom = (room) => {
     return (dispatch, getState, {getFirebase, getFirestore}) => {
         const firestore = getFirestore();
@@ -27,6 +31,7 @@ export const createChat = (chat) => {
             createdAt: new Date()
         }).then( () => {
             dispatch({ type: 'CREATE_CHAT', chat });
+            toastr.success('Success', 'message created');
         }).catch( (err) => {
             dispatch({ type: 'CREATE_CHAT_EROOR', err });
         } )

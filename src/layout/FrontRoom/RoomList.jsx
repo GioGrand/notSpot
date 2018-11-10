@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import RoomListDetail from "./RoomListDetail";
-import FlipMove from "react-flip-move";
 
 class RoomList extends Component {
   render() {
