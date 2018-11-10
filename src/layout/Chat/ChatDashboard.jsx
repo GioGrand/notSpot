@@ -5,19 +5,17 @@ import { compose } from "redux";
 import { BarLoader } from "react-spinners";
 import { Link } from "react-router-dom";
 
+
 //////////////////////////////// Components
+
+
 
 import ChatList from "./ChatList";
 import ChatCreateForm from "./ChatCreateForm";
 
 class ChatDashboard extends Component {
 
-  componentWillUnmount() {
-    console.log(this)
 
- this.props.firestore.unsetListener('chats');
-    // firebase.unsetListener({ collection: 'todos' }) // or object notation
-  }
 
   render() {
     const { chats } = this.props;
@@ -56,9 +54,9 @@ class ChatDashboard extends Component {
     );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    chats: state.firestore.ordered.chats
+    chats: state.firestore.ordered[ownProps.match.params.id]
   };
 };
 
@@ -69,7 +67,7 @@ export default compose(
       collection: "rooms",
       doc: props.match.params.id,
       subcollections: [{ collection: "chats", orderBy: ["createdAt", "desc"] }],
-      storeAs: "chats"
+      storeAs: `${props.match.params.id}`
     }
   ])
 )(ChatDashboard);

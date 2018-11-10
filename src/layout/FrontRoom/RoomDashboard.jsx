@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { BarLoader } from "react-spinners";
-import Typist from 'react-typist';
 
 
 //////////////////////////////// Components
@@ -50,9 +49,8 @@ class RoomDashboard extends Component {
 }
 const mapStateToProps = state => {
   return {
-    rooms: state.firestore.ordered.rooms,
-    auth: state.firebase.auth
-  };
+    rooms: state.firestore.ordered.rooms
+    };
 };
 
 export default compose(
