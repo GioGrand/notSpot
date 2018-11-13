@@ -24,10 +24,10 @@ class App extends Component {
           </header>
           <Switch>
               <Route exact path='/' component={RoomCreateForm} />
-              <Route path='/spot/:id' component={ChatDashboard} />
+              {/*  <Route path='/spot/:id' component={ChatDashboard} /> */ }
               <Route exact path='/createpassword/:id' component={RoomCreatePassword} />
               <Route exact path='/checkpassword/:id' component={RoomCheckPassword} />
-              <Route exact path='/token/:id' component={ChatContainer} />
+              <Route exact path='/spot/:id' component={ChatContainer} />
 
             </Switch>
         </main>

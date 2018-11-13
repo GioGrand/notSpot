@@ -26,14 +26,14 @@ class RoomCreatePassword extends Component {
         password: values.password,
         createdAt: new Date()
       });
-    const code = Math.random().toString(36).replace(/[^a-z]+/g, "").substr(0, 15);
+      const code = Math.random().toString(36).replace(/[^a-z]+/g, "").substr(0, 15) + Math.random().toString(36).replace(/[^a-z]+/g, "").substr(0, 15);
     await firestore.collection("tokens").doc(code).set({
         spot: this.props.match.params.id,
         createdAt: new Date()
       });
     // this.props.createPassword(this.state);
     this.props.reset();
-    history.push(`/token/${code}`);
+    history.push(`/spot/${code}`);
   };
 
   render() {
