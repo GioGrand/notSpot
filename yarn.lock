@@ -2030,6 +2030,10 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+classnames@^2.2.3:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
+
 clean-css@4.2.x:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.2.1.tgz#2d411ef76b8569b6d0c84068dabe85b0aa5e5c17"
@@ -3170,6 +3174,10 @@ esutils@^2.0.0, esutils@^2.0.2:
 etag@~1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
+
+eventemitter3@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-2.0.3.tgz#b5e1079b59fb5e1ba2771c0a993be060a58c99ba"
 
 eventemitter3@^3.0.0:
   version "3.1.0"
@@ -7130,6 +7138,13 @@ react-redux-firebase@^2.1.9:
     hoist-non-react-statics "^2.3.1"
     lodash "^4.17.10"
     prop-types "^15.6.1"
+
+react-redux-toastr@^7.4.1:
+  version "7.4.1"
+  resolved "https://registry.yarnpkg.com/react-redux-toastr/-/react-redux-toastr-7.4.1.tgz#6351dc075c5b6f45df145d711bf40d6ed4065634"
+  dependencies:
+    classnames "^2.2.3"
+    eventemitter3 "^2.0.3"
 
 react-redux@^5.1.0:
   version "5.1.0"
