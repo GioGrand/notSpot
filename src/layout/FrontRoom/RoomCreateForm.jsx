@@ -4,6 +4,7 @@ import { withFirestore } from "react-redux-firebase";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { reduxForm, Field } from "redux-form";
+import { mapPropsStream } from "recompose";
 
 class RoomCreateForm extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class RoomCreateForm extends Component {
       if (!stanza.exists) {
         this.setState({ message: "Create this spot →	" });
         this.setState({
+          userid: this.props.auth.uid,
           gio: "terzo",
           giu: "",
           bil: valore,
@@ -31,6 +33,7 @@ class RoomCreateForm extends Component {
         });
       } else {
         this.setState({
+          userid: this.props.auth.uid,
           message: valore + " is in the forest. Go there →	",
           gio: "quinto",
           bid: valore,
@@ -44,15 +47,12 @@ class RoomCreateForm extends Component {
   };
 
   handleSubmit = values => {
-    console.log(this.state);
     const { history } = this.props;
-    console.log(history);
     const bid2 = this.state.bid.toLowerCase();
     const bid3 = this.state.bil.toLowerCase();
 
     if (this.state.bid) {
       //  this.props.reset();
-      console.log(this.state);
       history.push(`/checkpassword/${bid2}`);
       // setTimeout(function() {
       //   history.push(`/checkpassword/${bid2}`);
@@ -61,6 +61,7 @@ class RoomCreateForm extends Component {
       this.props.createRoom(values);
       //  this.props.reset();
       this.setState({
+        userid: this.props.auth.uid,
         message: "Great. New spot somewhere",
         gio: "quinto"
       });
@@ -73,6 +74,7 @@ class RoomCreateForm extends Component {
 
   render() {
     const { message } = this.state;
+    const { auth } = this.props;
     return (
       <React.Fragment>
         <article className="list-container" id="books-interior-design">
@@ -119,10 +121,16 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth
+  }
+};  
+
 export default compose(
   withFirestore,
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   ),
   reduxForm({ form: "RoomCreateForm", enableReinitialize: true })

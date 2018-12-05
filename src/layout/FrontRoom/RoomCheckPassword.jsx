@@ -36,7 +36,8 @@ class RoomCheckPassword extends Component {
       const code = Math.random().toString(36).replace(/[^a-z]+/g, "").substr(0, 15) + Math.random().toString(36).replace(/[^a-z]+/g, "").substr(0, 15);
       await firestore.collection("tokens").doc(code).set({
         spot: this.props.match.params.id,
-        createdAt: new Date()
+        createdAt: new Date(),
+        authorId: this.props.auth.uid
       });
       this.props.reset();
       history.push(`/spot/${code}`);
@@ -96,7 +97,8 @@ class RoomCheckPassword extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    matches: state.firestore.data.matches
+    matches: state.firestore.data.matches,
+    auth: state.firebase.auth
   };
 };
 

@@ -24,12 +24,14 @@ class RoomCreatePassword extends Component {
     const { firestore, history } = this.props;
     await firestore.collection("matches").doc(this.props.match.params.id).set({
         password: values.password,
-        createdAt: new Date()
+        createdAt: new Date(),
+        authorId: this.props.auth.uid
       });
       const code = Math.random().toString(36).replace(/[^a-z]+/g, "").substr(0, 15) + Math.random().toString(36).replace(/[^a-z]+/g, "").substr(0, 15);
     await firestore.collection("tokens").doc(code).set({
         spot: this.props.match.params.id,
-        createdAt: new Date()
+        createdAt: new Date(),
+        authorId: this.props.auth.uid
       });
     // this.props.createPassword(this.state);
     this.props.reset();
@@ -85,10 +87,18 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const mapStateToProps = (state, ownProps) => {
+  return {
+    matches: state.firestore.data.matches,
+    auth: state.firebase.auth
+  };
+};
+
+
 export default compose(
   withFirestore,
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   ),
   reduxForm({ form: "RoomCreatePassword", enableReinitialize: true })

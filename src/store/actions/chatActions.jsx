@@ -1,18 +1,17 @@
 
-
-
 export const createRoom = room => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-    //  const authorId = getState().firebase.auth.uid;
+    const authorId = getState().firebase.auth.uid;
     const roomname = room.title;
     const roomname2 = roomname.toLowerCase();
+    
     firestore
       .collection("rooms")
       .doc(roomname2)
       .set({
         ...room,
-        // authorId: authorId,
+        authorId: authorId,
         createdAt: new Date()
       })
       .then(() => {
@@ -23,7 +22,6 @@ export const createRoom = room => {
       });
   };
 };
-
 
 export const createPassword = password => {
   return async (dispatch, getState, { getFirebase, getFirestore }) => {
@@ -47,8 +45,6 @@ export const createPassword = password => {
       }
   };
 };
-
-
 
 // export const createPassword = password => {
 //   return (dispatch, getState, { getFirebase, getFirestore }) => {
@@ -77,13 +73,15 @@ export const createChat = chat => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const ida = chat.roomid;
+    const authorId = getState().firebase.auth.uid;
     firestore
       .collection("rooms")
       .doc(ida)
       .collection("chats")
       .add({
         message: chat.message,
-        createdAt: new Date()
+        createdAt: new Date(),
+        authorId: authorId
       })
       .then(() => {
         dispatch({ type: "CREATE_CHAT", chat });
